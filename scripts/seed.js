@@ -16,7 +16,9 @@ if (!uri || !user || !password) {
   process.exit(1)
 }
 
-const driver = neo4j.driver(uri, neo4j.auth.basic(user, password))
+const driver = neo4j.driver(uri, neo4j.auth.basic(user, password), {
+  connectionAcquisitionTimeout: 30000,
+})
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
